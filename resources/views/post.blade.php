@@ -2,8 +2,8 @@
 
 @section('container')
     <article>
-        <h2>Judul</h2>
-        <h5>Author</h5>
+        <h2>{{ $post->title }}</h2>
+        {!! $post->body !!}
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nam amet laudantium, sit dolorum eligendi
             veniam. Porro perferendis tempora illum soluta. Illum quam cum, voluptate libero corporis at nulla
             necessitatibus veniam rem eos placeat, dolorum repellat praesentium quaerat delectus quisquam ratione explicabo

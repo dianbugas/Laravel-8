@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,15 +26,18 @@ Route::get('/about', function () {
     ]);
 });
 
-Route::get('/blog', function () {
-    return view('posts', [
-        "title" => "Blog"
-    ]);
-});
+// Route::get('/blog', function () {
+//     return view('posts', [
+//         "title" => "Blog"
+//     ]);
+// });
 
-// /{{ slug }}
-Route::get('blogs', function () {
-    return view('post', [
-        "title" => "Single Post"
-    ]);
-});
+// // /{{ slug }}
+// Route::get('blogs', function () {
+//     return view('post', [
+//         "title" => "Single Post"
+//     ]);
+// });
+
+Route::get('posts', [PostController::class, 'index']);
+Route::get('post/{post:slug}', [PostController::class, 'show']);
