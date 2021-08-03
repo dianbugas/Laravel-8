@@ -10,7 +10,8 @@ class PostController extends Controller
     public function index()
     {
         return view('posts', [
-            "title" => "Posts",
+            "title" => "All Post",
+            // with untuk mempercepat performent saat terjadinya realasi db yang akan di looping
             "posts" => Post::latest()->get()
         ]);
     }

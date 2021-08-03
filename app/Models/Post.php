@@ -17,6 +17,8 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
+    protected $with = ['category', 'author'];
+
     // user di aliaskan
     public function author()
     {
