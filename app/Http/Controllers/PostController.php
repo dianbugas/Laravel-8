@@ -11,6 +11,7 @@ class PostController extends Controller
     {
         return view('posts', [
             "title" => "All Post",
+            "active" => 'posts',
             // with untuk mempercepat performent saat terjadinya realasi db yang akan di looping
             "posts" => Post::latest()->get()
         ]);
@@ -20,6 +21,7 @@ class PostController extends Controller
     {
         return view('post', [
             "title" => "Single Post",
+            "active" => 'posts',
             "post" => $post
         ]);
     }
