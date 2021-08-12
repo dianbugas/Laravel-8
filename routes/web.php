@@ -18,13 +18,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home', [
-        "title" => "Home"
+        'title' => 'Home',
+        'active' => 'home',
     ]);
 });
 
 Route::get('/about', function () {
     return view('about', [
-        "title" => "About"
+        'title' => 'About',
+        'active' => 'about',
+        'email' => 'doambugas@sdas.dasda',
+        'image' => 'sand.jpg'
+
     ]);
 });
 
@@ -43,6 +48,8 @@ Route::get('/about', function () {
 
 Route::get('posts', [PostController::class, 'index']);
 
+Route::get('post/{post:slug}', [PostController::class, 'show']);
+
 Route::get('/categories', function () {
     return view('categories', [
         'title' => 'Post Kategori',
@@ -51,20 +58,19 @@ Route::get('/categories', function () {
     ]);
 });
 
-Route::get('post/{post:slug}', [PostController::class, 'show']);
+// Route::get('categories/{category:slug}', function (Category $category) {
+//     return view('posts', [
+//         'title' => "Post bay Category : $category->name",
+//         'active' => 'categories',
+//         // LOAD untuk quary banding untuk mempercepat performent saat terjadinya realasi db yang ajan di looping
+//         'posts' => $category->posts->load('category', 'author'),
+//     ]);
+// });
 
-Route::get('categories/{category:slug}', function (Category $category) {
-    return view('posts', [
-        'title' => "Post bay Category : $category->name",
-        'active' => 'categories',
-        // LOAD untuk quary banding untuk mempercepat performent saat terjadinya realasi db yang ajan di looping
-        'posts' => $category->posts->load('category', 'author'),
-    ]);
-});
-
-Route::get('/author/{author:username}', function (User $author) {
-    return view('posts', [
-        'title' => "Post By Author : $author->name",
-        'posts' => $author->posts->load('category', 'author'),
-    ]);
-});
+// Route::get('/author/{author:username}', function (User $author) {
+//     return view('posts', [
+//         'title' => "Post By Author : $author->name",
+//         'active' => 'posts',
+//         'posts' => $author->posts->load('category', 'author'),
+//     ]);
+// });
