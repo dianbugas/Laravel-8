@@ -28,12 +28,16 @@
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->category->name }}</td>
                         <td>
-                            <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-warning"><span
+                            <a href="/dashboard/posts/{{ $post->slug }}/edit" class="badge bg-warning"><span
                                     data-feather="edit"></span></a>
                             <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-info"><span
                                     data-feather="eye"></span></a>
-                            <a href="/dashboard/posts/{{ $post->id }}" class="badge bg-danger"><span
-                                    data-feather="x-circle"></span></a>
+                            <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
+                            @method('delete')
+                            @csrf
+                                <button href="/dashboard/posts/{{ $post->id }}" onclick="return confirm('Yakin Menghapus data?')" class="badge bg-danger border-0"><span
+                                data-feather="x-circle"></span></button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
