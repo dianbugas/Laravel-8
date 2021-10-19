@@ -5,7 +5,7 @@
         <h1 class="h2">Create New Post</h1>
     </div>
     <div class="col-lg-8">
-        <form method="post" action="/dashboard/posts" class="mb-5">
+        <form method="post" action="/dashboard/posts" class="mb-5" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
@@ -40,6 +40,15 @@
                 </select>
             </div>
             <div class="mb-3">
+                <label for="image" class="form-label">Post Image</label>
+                <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image">
+                @error('image')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            <div class="mb-3">
                 <label for="body" class="form-label">Body</label>
                 @error('body')
                     <p class="text-danger">{{ $message }}</p>
@@ -54,7 +63,6 @@
     <script>
         const title = document.querySelector('#title');
         const slug = document.querySelector('#slug');
-
 
         title.addEventListener('change', function() {
             fetch('/dashboard/posts/checkSlug?title=' + title.value)
