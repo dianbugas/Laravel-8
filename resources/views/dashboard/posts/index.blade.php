@@ -35,7 +35,7 @@
                             <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
                             @method('delete')
                             @csrf
-                                <button href="/dashboard/posts/{{ $post->id }}" onclick="return confirm('Yakin Menghapus data?')" class="badge bg-danger border-0"><span
+                                <button onclick="return confirm('Yakin Menghapus data?')" class="badge bg-danger border-0"><span
                                 data-feather="x-circle"></span></button>
                             </form>
                         </td>

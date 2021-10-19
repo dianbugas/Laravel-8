@@ -7,11 +7,11 @@
                 <h2 class="mb-3">{{ $post->title }}</h2>
                 <a href="/dashboard/posts" class="btn btn-success"><span data-feather="arrow-left"></span> Back to all my
                     posts</a>
-                <a href="" class="btn btn-warning"><span data-feather="edit"></span> Edit</a>
-                <form action="/dashboard/posts/{{ $post->slug }}/edit" method="post" class="d-inline">
+                <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-warning"><span data-feather="edit"></span> Edit</a>
+                <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
                     @method('delete')
                     @csrf
-                        <button href="/dashboard/posts/{{ $post->id }}" onclick="return confirm('Yakin Menghapus data?')" class="btn btn-danger border-0"><span
+                        <button onclick="return confirm('Yakin Menghapus data?')" class="btn btn-danger border-0"><span
                         data-feather="x-circle"></span> Delete</button>
                 </form>
 
